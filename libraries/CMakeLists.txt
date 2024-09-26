@@ -167,3 +167,19 @@ target_include_directories(SNTP_FILES PUBLIC
         ${WIZNET_DIR}/Ethernet
         ${WIZNET_DIR}/Internet/SNTP
         )
+
+# modbus Library
+add_library(MODBUS_FILES STATIC)
+
+target_sources(MODBUS_FILES PUBLIC
+        ${WIZNET_DIR}/../modbusLibrary/mb.c
+        ${WIZNET_DIR}/../modbusLibrary/mbascii.c
+        ${WIZNET_DIR}/../modbusLibrary/mbtcp.c
+)
+target_include_directories(MODBUS_FILES PUBLIC
+        ${WIZNET_DIR}/Ethernet
+        ${WIZNET_DIR}/../modbusLibrary
+)
+target_link_libraries(MODBUS_FILES PRIVATE
+        pico_stdlib
+)
